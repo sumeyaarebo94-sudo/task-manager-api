@@ -6,7 +6,7 @@ function getAllTasks(req, res) {
 }
 
 function getTaskById(req, res) {
-    const id = parseInt(req.params.id);
+    const id = Number(req.params.id);
 
     const task = taskService.getTaskById(id);
 
@@ -35,13 +35,13 @@ function createTask(req, res) {
         priority
     };
 
-    taskService.createTask(newTask);
+    const createdTask = taskService.createTask(newTask);
 
-    res.status(201).json(newTask);
+    res.status(201).json(createdTask);
 }
 
 function updateTask(req, res) {
-    const id = parseInt(req.params.id);
+    const id = Number(req.params.id);
 
     const updatedTask = taskService.updateTask(id, req.body);
 
@@ -55,7 +55,7 @@ function updateTask(req, res) {
 }
 
 function deleteTask(req, res) {
-    const id = parseInt(req.params.id);
+    const id = Number(req.params.id);
 
     const deletedTask = taskService.deleteTask(id);
 
